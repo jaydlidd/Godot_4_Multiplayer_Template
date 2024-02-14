@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bi84dipyrcag8"]
+
+[ext_resource type="Script" path="res://Scripts/scene_manager.gd" id="1_8cuei"]
+[ext_resource type="PackedScene" uid="uid://f876k6rdrb04" path="res://Scenes/player.tscn" id="1_g64bx"]
+[ext_resource type="PackedScene" uid="uid://bjxg6alr8fdmt" path="res://Scenes/cube.tscn" id="2_4k2ck"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8j2tm"]
+size = Vector3(100, 0.1, 100)
+
+[node name="MainGame" type="Node3D"]
+script = ExtResource("1_8cuei")
+player_scene = ExtResource("1_g64bx")
+
+[node name="Cube" parent="." instance=ExtResource("2_4k2ck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 10)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_8j2tm")
